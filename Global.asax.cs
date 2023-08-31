@@ -19,9 +19,9 @@ namespace Role_based
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
-        protected void Application_AuthenticateRequest(object sender, EventArgs e)
+        protected void Application_AuthenticateRequest(Object sender, EventArgs e)
         {
-            if (HttpContext.Current != null)
+            if (HttpContext.Current.User != null)
             {
                 if (HttpContext.Current.User.Identity.IsAuthenticated)
                 {

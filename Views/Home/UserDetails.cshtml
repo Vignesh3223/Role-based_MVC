@@ -4,12 +4,9 @@
     ViewBag.Title = "UserDetails";
 }
 
-<h2>UserDetails</h2>
+<h2>Users Details</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
+<table class="table table-bordered">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Username)
@@ -23,7 +20,9 @@
         <th>
             @Html.DisplayNameFor(model => model.Role.RoleName)
         </th>
-        <th></th>
+        <th>
+            Action
+        </th>
     </tr>
 
 @foreach (var item in Model) {

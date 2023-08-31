@@ -225,10 +225,23 @@
     <Content Include="Views\Training\Details.cshtml" />
     <Content Include="Views\Training\Edit.cshtml" />
     <Content Include="Views\Training\Delete.cshtml" />
+    <Content Include="Views\Trainee\Create.cshtml" />
+    <Content Include="Views\Trainee\Details.cshtml" />
+    <Content Include="Views\Trainee\Edit.cshtml" />
+    <Content Include="Views\Trainee\Delete.cshtml" />
+    <Content Include="Views\Trainee\Index.cshtml" />
+    <Content Include="Views\Home\Details.cshtml" />
+    <Content Include="Views\Home\Delete.cshtml" />
+    <Content Include="Views\Home\Edit.cshtml" />
+    <Content Include="Views\Trainee\View2.cshtml" />
+    <Content Include="Views\Training\Training1.cshtml" />
+    <Content Include="Views\Training\Training2.cshtml" />
+    <Content Include="Views\Home\Welcome.cshtml" />
+    <Content Include="Views\Trainee\View0.cshtml" />
+    <Content Include="Views\Trainee\View1.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Trainee\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewBag.Title = "Welcome";
+}
+
+<h1 class="text-center">Welcome</h1>
+<h1>Hello,@HttpContext.Current.User.Identity.Name</h1>
+<h2>Switch the Tabs to know more...</h2>
+
+<hr />
+<h4 style="color:indigo">
+    Model View Controller (MVC)
+</h4>
+<h4>
+    MVC is a design pattern used to decouple user-interface (view), data (model), and application logic (controller). This pattern helps to achieve separation of concerns.
+</h4>
+<h4>
+    Using the MVC pattern for websites, requests are routed to a Controller that is responsible for working with the Model to perform actions and/or retrieve data. The Controller chooses the View to display and provides it with the Model. The View renders the final page, based on the data in the Model.
+</h4>

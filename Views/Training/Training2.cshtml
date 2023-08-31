@@ -1,0 +1,36 @@
+﻿@model IEnumerable<Role_based.Models.Training>
+
+@{
+    ViewBag.Title = "Training2";
+}
+
+<h2>Training Domains</h2>
+
+<table class="table table-bordered">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DomainID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Domain)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Trainer)
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DomainID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Domain)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Trainer)
+        </td>
+    </tr>
+}
+
+</table>

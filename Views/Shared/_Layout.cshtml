@@ -16,29 +16,57 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Application name", "Welcome", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
-                @if (User.IsInRole("Admin"))
+            @if (User.Identity.IsAuthenticated)
+            {
+                if (User.IsInRole("Admin"))
                 {
                     <div class="navbar-collapse collapse">
                         <ul class="nav navbar-nav">
-                            <li>@Html.ActionLink("Home", "Index", "Training")</li>
+                            <li>@Html.ActionLink("Home", "Welcome", "Home")</li>
                             <li>@Html.ActionLink("Users", "UserDetails", "Home")</li>
+                            <li>@Html.ActionLink("Training Domain", "Index", "Training")</li>
+                            <li>@Html.ActionLink("Trainees", "View0", "Trainee")</li>
                             <li>@Html.ActionLink("Logout", "Logout", "Home")</li>
                         </ul>
                     </div>
                 }
-                else
+                if (User.IsInRole("Trainer"))
                 {
                     <div class="navbar-collapse collapse">
                         <ul class="nav navbar-nav">
-                            <li>@Html.ActionLink("Home", "UserDetails", "User")</li>
-                            <li>@Html.ActionLink("Register", "Register", "Home", new { @class = "nav-link" })</li>
-                            <li>@Html.ActionLink("Login", "Login", "Home", new { @class = "nav-link" })</li>
+                            <li>@Html.ActionLink("Home", "Welcome", "Home")</li>
+                            <li>@Html.ActionLink("Training Domain", "Training1", "Training")</li>
+                            <li>@Html.ActionLink("Trainees", "View1", "Trainee")</li>
+                            <li>@Html.ActionLink("Logout", "Logout", "Home")</li>
                         </ul>
-                        </div>
-                        }
+                    </div>
+                }
+                if (User.IsInRole("Trainee"))
+                {
+                    <div class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav">
+                            <li>@Html.ActionLink("Home", "Welcome", "Home")</li>
+                            <li>@Html.ActionLink("Training Domain", "Training2", "Training")</li>
+                            <li>@Html.ActionLink("Trainees", "View2", "Trainee")</li>
+                            <li>@Html.ActionLink("Logout", "Logout", "Home")</li>
+                        </ul>
+                    </div>
+                }
+            }
+            else
+            {
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("Register", "Register", "Home")</li>
+                        <li>@Html.ActionLink("Login", "Login", "Home")</li>
+                    </ul>
                 </div>
+            }
+
+        </div>
     </div>
     <div class="container body-content">
         @RenderBody()

@@ -1,6 +1,7 @@
 ﻿using Role_based.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -22,7 +23,6 @@ namespace Role_based.Controllers
         [AllowAnonymous]
         public ActionResult Index(User user) 
         {
-            //MVCDatabaseEntities mvcdb = new MVCDatabaseEntities();
             Validate_User_Result roleUser = mvcdb.Validate_User(user.Username, user.Password).FirstOrDefault();
             string message = string.Empty;
             switch (roleUser.UserId.Value)
@@ -42,10 +42,15 @@ namespace Role_based.Controllers
                         cookie.Expires = ticket.Expiration;
                     }
                     Response.Cookies.Add(cookie);
-                    return RedirectToAction("UserDetails");
+                    return RedirectToAction("Welcome");
             }
             ViewBag.Message = message;
             return View(user);
+        }
+
+        public ActionResult Welcome()
+        {
+            return View();
         }
         public ActionResult Register()
         {
@@ -61,7 +66,7 @@ namespace Role_based.Controllers
             {
                 mvcdb.Users.Add(newUser);
                 mvcdb.SaveChanges();
-                return RedirectToAction("Login");
+                return RedirectToAction("Index");
             }
             return View();
         }
@@ -73,6 +78,41 @@ namespace Role_based.Controllers
             return View(user);
         }
 
+        [HttpGet]
+        public ActionResult Details(int? id)
+        {
+            User user = mvcdb.Users.Find(id);
+            return View(user);
+        }
+
+        public ActionResult Edit(int? id)
+        {
+            User user = mvcdb.Users.Find(id);
+            List<Role> role = mvcdb.Roles.ToList();
+            ViewBag.Roles = new SelectList(role, "RoleID", "RoleName");
+            return View(user);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "Username,RoleID")] User user)
+        {
+            if (ModelState.IsValid)
+            {
+                mvcdb.Entry(user).State = System.Data.Entity.EntityState.Modified;
+                mvcdb.SaveChanges();
+                return RedirectToAction("UserDetails");
+            }
+            return View();
+        }
+
+        public ActionResult Delete(int? id)
+        {
+            User user = mvcdb.Users.Find(id);
+            mvcdb.Users.Remove(user);
+            mvcdb.SaveChanges();
+            return RedirectToAction("UserDetails");
+        }
         public ActionResult Logout()
         {
             FormsAuthentication.SignOut();

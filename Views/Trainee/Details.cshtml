@@ -1,0 +1,58 @@
+﻿@model Role_based.Models.Trainee
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details of Trainee</h2>
+
+<div>
+    <h4>Trainee</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Tname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tcity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tcity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TImage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TImage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Training.Domain)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Training.Domain)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.TraineeID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

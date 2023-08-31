@@ -1,0 +1,73 @@
+﻿@model IEnumerable<Role_based.Models.Trainee>
+
+@{
+    ViewBag.Title = "View0";
+}
+
+<h2>View0</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table table-bordered">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Tname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tcity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TImage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Training.Domain)
+        </th>
+        <th>
+            Action
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tage)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tcity)
+        </td>
+        <td>
+            @if (item.TImage != null)
+            {
+                <img alt="profile" class="img-rounded img1" src="data:image;base64,@Convert.ToBase64String(item.TImage)" />
+            }
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Training.Domain)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.TraineeID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.TraineeID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.TraineeID })
+        </td>
+    </tr>
+}
+
+</table>
+
+<div>
+    @Html.ActionLink("Back", "Index", "Training")
+</div>
+
+<style>
+    img {
+        width: 100px;
+        height: 100px;
+    }
+</style>

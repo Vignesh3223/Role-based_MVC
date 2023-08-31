@@ -7,6 +7,7 @@ using System.Web.Mvc;
 
 namespace Role_based.Controllers
 {
+    [Authorize]
     public class TrainingController : Controller
     {
         MVCDatabaseEntities mvcdb = new MVCDatabaseEntities();
@@ -16,6 +17,19 @@ namespace Role_based.Controllers
             List<Training> training = mvcdb.Trainings.ToList();
             return View(training);
         }
+
+        public ActionResult Training1()
+        {
+            List<Training> training = mvcdb.Trainings.ToList();
+            return View(training);
+        }
+
+        public ActionResult Training2()
+        {
+            List<Training> training = mvcdb.Trainings.ToList();
+            return View(training);
+        }
+
         public ActionResult Create()
         {
             return View();

@@ -1,24 +1,21 @@
 ﻿@model IEnumerable<Role_based.Models.Training>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Training1";
 }
 
-<h2>Index</h2>
+<h2>Training Domain</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table table-bordered">
     <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DomainID)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.Domain)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Trainer)
-        </th>
-        <th>
-            Action
         </th>
     </tr>
 
@@ -26,21 +23,18 @@
     {
         <tr>
             <td>
+                @Html.DisplayFor(modelItem => item.DomainID)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.Domain)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Trainer)
             </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.DomainID }) |
-                @Html.ActionLink("Details", "Details", new { id = item.DomainID }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.DomainID })
-            </td>
         </tr>
     }
 
 </table>
-
 <h3><i class="fa-solid fa-hand-point-right" style="color: #000000;"></i> Click on the Domain to see the trainees in that domain..!</h3>
 @foreach (Role_based.Models.Training training in Model)
 {
