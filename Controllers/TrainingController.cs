@@ -77,6 +77,14 @@ namespace Role_based.Controllers
         public ActionResult Delete(int? id)
         {
             Training training = mvcdb.Trainings.Find(id);
+            return View(training);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            Training training = mvcdb.Trainings.Find(id);
             mvcdb.Trainings.Remove(training);
             mvcdb.SaveChanges();
             return RedirectToAction("Index");

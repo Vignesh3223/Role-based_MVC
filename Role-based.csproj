@@ -228,7 +228,6 @@
     <Content Include="Views\Trainee\Create.cshtml" />
     <Content Include="Views\Trainee\Details.cshtml" />
     <Content Include="Views\Trainee\Edit.cshtml" />
-    <Content Include="Views\Trainee\Delete.cshtml" />
     <Content Include="Views\Trainee\Index.cshtml" />
     <Content Include="Views\Home\Details.cshtml" />
     <Content Include="Views\Home\Delete.cshtml" />
@@ -239,6 +238,7 @@
     <Content Include="Views\Home\Welcome.cshtml" />
     <Content Include="Views\Trainee\View0.cshtml" />
     <Content Include="Views\Trainee\View1.cshtml" />
+    <Content Include="Views\Trainee\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

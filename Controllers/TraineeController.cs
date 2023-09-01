@@ -40,6 +40,7 @@ namespace Role_based.Controllers
             ViewBag.Trainings = new SelectList(training, "DomainID", "Domain");
             return View();
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(HttpPostedFileBase TImage, [Bind(Include = "Tname, Tage, Tcity, DomainID")] Trainee trainee)
@@ -77,7 +78,7 @@ namespace Role_based.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(HttpPostedFileBase TImage, [Bind(Include = "Tname,Tage,Tcity,DomainID")] Trainee trainee)
+        public ActionResult Edit(HttpPostedFileBase TImage, [Bind(Include = "TraineeID,Tname,Tage,Tcity,DomainID")] Trainee trainee)
         {
             if (ModelState.IsValid)
             {
@@ -98,10 +99,16 @@ namespace Role_based.Controllers
         public ActionResult Delete(int? id)
         {
             Trainee trainee = mvcdb.Trainees.Find(id);
+            return View(trainee);
+        }
+        [HttpPost,ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            Trainee trainee = mvcdb.Trainees.Find(id);
             mvcdb.Trainees.Remove(trainee);
             mvcdb.SaveChanges();
             return RedirectToAction("Index");
         }
-
     }
 }

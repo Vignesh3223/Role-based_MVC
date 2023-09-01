@@ -95,7 +95,7 @@ namespace Role_based.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Username,RoleID")] User user)
+        public ActionResult Edit([Bind(Include = "UserId,Username,RoleID,Password")] User user)
         {
             if (ModelState.IsValid)
             {
@@ -105,14 +105,22 @@ namespace Role_based.Controllers
             }
             return View();
         }
-
         public ActionResult Delete(int? id)
+        {
+            User user = mvcdb.Users.Find(id);
+            return View(user);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
         {
             User user = mvcdb.Users.Find(id);
             mvcdb.Users.Remove(user);
             mvcdb.SaveChanges();
             return RedirectToAction("UserDetails");
         }
+
         public ActionResult Logout()
         {
             FormsAuthentication.SignOut();

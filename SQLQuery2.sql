@@ -61,3 +61,8 @@ begin
 select -1[UserId],''[Roles]
 end
 end
+
+
+delete from Users where UserId=7
+
+insert into Users values('Vignesh','Vicky@123','2022-08-31',3),('Yamini','Yamini@1611','2022-08-31',2)
